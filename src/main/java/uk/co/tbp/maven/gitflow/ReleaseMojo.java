@@ -29,9 +29,9 @@ import org.eclipse.jgit.api.errors.*;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import uk.co.tbp.gitflow.GitFlowException;
-import uk.co.tbp.gitflow.GitFlowRepository;
-import uk.co.tbp.gitflow.GitUtils;
+import uk.co.tbp.jgitflow.GitFlowException;
+import uk.co.tbp.jgitflow.GitFlowRepository;
+import uk.co.tbp.jgitflow.GitUtils;
 
 /**
  * @goal release
