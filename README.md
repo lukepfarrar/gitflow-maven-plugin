@@ -30,9 +30,9 @@ Usage
 
 This will:
 
-1.Set project and dependency versions to be release versions on the develop branch, and commit this.
-2.Set correct project and dependency versions on develop branch, and commit this.
-3.Create the release branch from our first commit, which is set to be a release.
+1. Set project and dependency versions to be release versions on the develop branch, and commit this.
+2. Set correct project and dependency versions on develop branch, and commit this.
+3. Create the release branch from our first commit, which is set to be a release.
 
 When you do a normal git flow release finish XXX, the release branch will merge to develop without any
 complaint, as both branches have a common ancestry.
