@@ -1,5 +1,4 @@
 
-
 maven-gitflow-plugin
 ====================
 
