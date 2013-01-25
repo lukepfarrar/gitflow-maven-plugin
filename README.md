@@ -12,7 +12,7 @@ It does not use the maven release plugin. I don't miss it.
 
 Install
 -------
-Install as usual with *mvn clean install*
+Install as usual with **mvn clean install**
 
 However, as this is not in central a plugin group needs to be added to ~/.m2/settings.xml:
 
