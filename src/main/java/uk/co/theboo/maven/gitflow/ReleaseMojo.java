@@ -1,4 +1,4 @@
-package uk.co.tbp.maven.gitflow;
+package uk.co.theboo.maven.gitflow;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,9 +29,10 @@ import org.eclipse.jgit.api.errors.*;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import uk.co.tbp.jgitflow.GitFlowException;
-import uk.co.tbp.jgitflow.GitFlowRepository;
-import uk.co.tbp.jgitflow.GitUtils;
+import uk.co.theboo.jgitflow.GitFlowException;
+import uk.co.theboo.jgitflow.GitFlowRepository;
+import uk.co.theboo.jgitflow.GitUtils;
+import uk.co.theboo.maven.utils.PomUtils;
 
 /**
  * @goal release
@@ -66,7 +67,7 @@ public class ReleaseMojo extends AbstractMojo {
                 throw new MojoFailureException(error+"There is release branch. Finish this first.");
             }
             
-            if (!gitFlowRepo.ready()) {
+            if (!gitFlowRepo.hasConsistentState()) {
                 throw new MojoFailureException("Repository is in an inconsistent state. sort your commits out...");
             }
 
@@ -77,7 +78,7 @@ public class ReleaseMojo extends AbstractMojo {
                 System.out.println("initial rent = "+pomFile.getParentFile());
                 Model model;
                 try {
-                    model = readPom(pomFile);
+                    model = PomUtils.readPom(pomFile);
                 } catch (FileNotFoundException ex) {
                     throw new MojoExecutionException("Could not find POM file.", ex);
                 }
@@ -122,8 +123,9 @@ public class ReleaseMojo extends AbstractMojo {
                 writeModel(model, pomFile);
 
 
+                final String releaseMessagePrefix = "maven-gitflow-plugin:release setting POM version to ";
                 git.add().addFilepattern(pomFile.getName()).call();
-                git.commit().setMessage("Setting POM version to " + releaseVersion + " for branch " + releaseBranchName).call();
+                git.commit().setMessage(releaseMessagePrefix + releaseVersion + " for branch " + releaseBranchName).call();
                 git.branchCreate().setName(releaseBranchName).call();
 
 //        gitFlowRepo.createReleaseBranch(releaseVersion);
@@ -134,7 +136,7 @@ public class ReleaseMojo extends AbstractMojo {
 //                modelWriter.write(pomFile, null, model);
                 writeModel(model, pomFile);
                 git.add().addFilepattern(pomFile.getName()).call();
-                git.commit().setMessage("Setting POM version to " + developVersion).call();
+                git.commit().setMessage(releaseMessagePrefix + developVersion).call();
 
 
             } finally {
@@ -153,26 +155,7 @@ public class ReleaseMojo extends AbstractMojo {
 
     }
 
-    private static Model readPom(final File pomFile) throws FileNotFoundException, IOException {
-        FileReader fileReader = null;
-
-        try {
-            fileReader = new FileReader(pomFile);
-            MavenXpp3Reader m = new MavenXpp3Reader();
-            Model model;
-            try {
-                model = m.read(fileReader);
-            } catch (XmlPullParserException ex) {
-                throw new IOException("POM " + pomFile.getAbsolutePath() + " could not be parsed.", ex);
-            }
-//            model.setPomFile(pomFile);
-            return model;
-        } finally {
-            if (fileReader != null) {
-                fileReader.close();
-            }
-        }
-    }
+    
     
     private void writeModel(Model model, File pom) throws IOException {        
         Writer writer = null;

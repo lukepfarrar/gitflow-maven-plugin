@@ -1,4 +1,4 @@
-package uk.co.tbp.maven.gitflow;
+package uk.co.theboo.maven.gitflow;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
