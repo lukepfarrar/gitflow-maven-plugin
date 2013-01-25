@@ -11,6 +11,18 @@ I wrote this maven plugin to avoid inevitable merges when you finish a release b
 
 It does not use the maven release plugin. I don't miss it.
 
+Install
+-------
+Install as usual with *mvn clean install*
+
+However, as this is not in central a plugin group needs to be added to ~/.m2/settings.xml:
+
+<settings>
+    <pluginGroups>
+        <pluginGroup>uk.co.theboo</pluginGroup>
+    </pluginGroups>
+</settings>
+
 Usage
 -----
 
