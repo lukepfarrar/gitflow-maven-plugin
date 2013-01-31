@@ -56,6 +56,7 @@ jgitflow must first be installed:
 
 * **git clone git@github.com:lukepfarrar/jgitflow.git**
 * **cd jgitflow**
+* **git flow init -d**
 * **mvn clean install**
 * **cd ..**
 
@@ -63,6 +64,7 @@ Followed by the plugin itself:
 
 * **git clone git@github.com:lukepfarrar/maven-gitflow-plugin.git**
 * **cd maven-gitflow-plugin**
+* **git flow init -d**
 * **mvn clean install**
 
 As this is not in central a plugin group needs to be added to ~/.m2/settings.xml:
