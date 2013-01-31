@@ -61,7 +61,7 @@ jgitflow must first be installed:
 
 Followed by the plugin itself:
 
-* **git clone git://github.com/lukepfarrar/maven-gitflow-plugin.git**
+* **git clone git@github.com:lukepfarrar/maven-gitflow-plugin.git**
 * **cd maven-gitflow-plugin**
 * **mvn clean install**
 
