@@ -2,7 +2,6 @@ package uk.co.theboo.maven.gitflow;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
@@ -16,14 +15,12 @@ import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 //import org.apache.maven.model.io.DefaultModelWriter;
 //import org.apache.maven.model.io.ModelWriter;
-import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.shared.release.versions.DefaultVersionInfo;
 import org.apache.maven.shared.release.versions.VersionParseException;
 import org.codehaus.plexus.util.WriterFactory;
-import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.*;
 import org.jdom.Document;
@@ -40,10 +37,6 @@ import uk.co.theboo.maven.utils.PomUtils;
  * @author Luke Farrar <lfarrar@thebookpeople.co.uk>
  */
 public class ReleaseMojo extends AbstractMojo {
-
-    public static void main(String[] args) throws MojoExecutionException, MojoFailureException {
-//        new ReleaseMojo().execute();
-    }
     
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
