@@ -43,7 +43,7 @@ Using the pluging this would be:
 -------------------------------
 1. **mvn gitflow:release** - *Automatically increments the version number on
 develop & release branch, and changes any SNAPSHOT references to release versions
-on the release branch.
+on the release branch.*
 
 Any bug fixes for the release are done, and then to finish the release:
 
@@ -79,10 +79,11 @@ Usage
 The only useful goal at present is **mvn gitflow:release**
 
 This will:
+
 1. Set project and dependency versions to be release versions on the develop branch, and commit this.
 2. Set correct project and dependency versions on develop branch, and commit this.
 3. Create the release branch from our first commit, which is set to be a release.
 
 When you do a normal git flow release finish XXX, the release branch will merge to develop without any
-complaint, as both branches have a common ancestry.
+complaint, as both branches now have a common ancestry.
 
