@@ -39,7 +39,7 @@ Any bug fixes for the 0.1 release are done, and then to finish the release:
 11. **git flow release finish 0.1** - *This will result in conflicts in the pom*
 12. **git flow release finish 0.1** - *This will now work*
 
-Using the pluging this would be:
+Using the plugin this would be:
 -------------------------------
 1. **mvn gitflow:release** - *Automatically increments the version number on
 develop & release branch, and changes any SNAPSHOT references to release versions
