@@ -4,7 +4,7 @@
 
     <groupId>uk.co.theboo</groupId>
     <artifactId>gitflow-maven-plugin</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3</version>
     <packaging>maven-plugin</packaging>
 
     <name>gitflow-maven-plugin Maven Mojo</name>
@@ -73,7 +73,7 @@
         <dependency>
             <groupId>uk.co.theboo</groupId>
             <artifactId>jgitflow</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.1</version>
             <type>jar</type>
         </dependency>
     </dependencies>
