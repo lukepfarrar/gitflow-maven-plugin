@@ -20,8 +20,6 @@ import uk.co.theboo.maven.utils.PomUtils;
 
 /**
  * @goal validate
- *
- * @author Luke Farrar <lfarrar@thebookpeople.co.uk>
  */
 public class ValidateMojo extends AbstractMojo {
 
