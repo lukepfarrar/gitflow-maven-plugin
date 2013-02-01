@@ -9,7 +9,12 @@
 
     <name>gitflow-maven-plugin Maven Mojo</name>
     <url>http://maven.apache.org</url>
-
+    <licenses>
+        <license>
+            <name>GPL v3</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mavenVersion>3.0</mavenVersion>
