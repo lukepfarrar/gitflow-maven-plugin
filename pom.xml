@@ -79,7 +79,7 @@
         <dependency>
             <groupId>uk.co.theboo</groupId>
             <artifactId>jgitflow</artifactId>
-            <version>0.2-SNAPSHOT</version>
+            <version>0.3-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
         <dependency>
