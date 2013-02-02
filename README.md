@@ -1,5 +1,5 @@
 
-maven-gitflow-plugin
+gitflow-maven-plugin
 ====================
 
 I wrote this maven plugin to avoid inevitable merges when you finish a git flow release branch
@@ -62,8 +62,8 @@ jgitflow must first be installed:
 
 Followed by the plugin itself:
 
-* **git clone git@github.com:lukepfarrar/maven-gitflow-plugin.git**
-* **cd maven-gitflow-plugin**
+* **git clone git@github.com:lukepfarrar/gitflow-maven-plugin.git**
+* **cd gitflow-maven-plugin**
 * **git flow init -d**
 * **mvn clean install**
 
