@@ -19,18 +19,21 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import uk.co.theboo.jgitflow.GitFlowException;
 import uk.co.theboo.jgitflow.GitFlowRepository;
 import uk.co.theboo.jgitflow.GitUtils;
+import uk.co.theboo.jgitflow.NotGitFlowRepositoryException;
 import uk.co.theboo.maven.utils.PomUtils;
 
 @Mojo(name = "release")
 public class ReleaseMojo extends AbstractMojo {
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        final String releaseVersion, developVersion, currentVersion, releaseBranchName;
+    public void execute() throws MojoExecutionException, MojoFailureException {       
+        
         boolean failed = true;
-
+        
         try {
-            GitFlowRepository gitFlowRepo = new GitFlowRepository(GitUtils.initGitRepository());
+            GitFlowRepository gitFlowRepo = null;
+            gitFlowRepo = new GitFlowRepository(GitUtils.initGitRepository());
+
             Git git = gitFlowRepo.git();
 
             // Check for unfinished releases
@@ -55,7 +58,7 @@ public class ReleaseMojo extends AbstractMojo {
             final String currentBranch = git.getRepository().getBranch();
             try {
                 gitFlowRepo.checkoutDevelop();
-                
+
                 final File pomFile = new File("pom.xml");
                 Model model;
                 try {
@@ -64,10 +67,10 @@ public class ReleaseMojo extends AbstractMojo {
                     throw new MojoExecutionException("Could not find pom.xml", ex);
                 }
 
-                currentVersion = model.getVersion();
-                DefaultVersionInfo versionInfo = new DefaultVersionInfo(currentVersion);
-                releaseVersion = versionInfo.getReleaseVersionString();
-                developVersion = versionInfo.getNextVersion().getSnapshotVersionString();
+                final String currentVersion = model.getVersion();
+                final DefaultVersionInfo versionInfo = new DefaultVersionInfo(currentVersion);
+                final String releaseVersion = versionInfo.getReleaseVersionString();
+                final String developVersion = versionInfo.getNextVersion().getSnapshotVersionString();
 
                 getLog().info("");
                 getLog().info("Current development version is: " + currentVersion);
@@ -87,10 +90,11 @@ public class ReleaseMojo extends AbstractMojo {
                 // Create the new release branch from this commit
                 git.branchCreate().setName(releaseBranchName).call();
 
-                // Whilst still on the develop branch, revert the commit off which release is branched.
+                oneSecondDelay(); // stops commits having same time
+                // Whilst still on the develop branch, revert the commit off which release is branched
                 git.revert().include(relasePomOnDevelopCommit).call();
-                
-                // read the pom again, (should be same as at first
+
+                // read the pom again, (should be same as at first, fix this not to re-read at some point)
                 try {
                     model = PomUtils.readPom(pomFile);
                 } catch (FileNotFoundException ex) {
@@ -111,7 +115,7 @@ public class ReleaseMojo extends AbstractMojo {
                 if (!dependencyLog.isEmpty()) {
                     getLog().info("- The following dependency versions have changed on branch '" + releaseBranchName + "':");
                     for (String nextDependencyLogEntry : dependencyLog) {
-                        getLog().info("---- " + nextDependencyLogEntry);
+                        getLog().info("--  " + nextDependencyLogEntry);
                     }
                 }
                 getLog().info("- You are now on branch '" + releaseBranchName + "'");
@@ -129,14 +133,16 @@ public class ReleaseMojo extends AbstractMojo {
                     git.checkout().setName(currentBranch).call();
                 }
             }
+        } catch (NotGitFlowRepositoryException ex) {
+            getLog().error("This repository has not been initialized with git flow init.", ex);
         } catch (GitFlowException e) {
-            throw new MojoExecutionException("git-flow problem", e);
+            throw new MojoExecutionException("git-flow problem has occured.", e);
         } catch (IOException e) {
-            throw new MojoExecutionException("git-flow problem", e);
+            throw new MojoExecutionException("git-flow problem has occured.", e);
         } catch (GitAPIException e) {
-            throw new MojoExecutionException("git-flow problem", e);
+            throw new MojoExecutionException("git problem has occured.", e);
         } catch (VersionParseException ex) {
-            throw new MojoExecutionException("Could not parse version", ex);
+            throw new MojoExecutionException("Could not parse version.", ex);
         }
     }
 
