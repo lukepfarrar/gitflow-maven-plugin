@@ -12,7 +12,7 @@ public class HelpMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         getLog().info("");
         getLog().info("This plugin simplifies gitflow releases with maven projects.");
-        getLog().info("See https://github.com/lukepfarrar/maven-gitflow-plugin for more details.");
+        getLog().info("See https://github.com/lukepfarrar/gitflow-maven-plugin for more details.");
         getLog().info("");
         getLog().info("mvn gitflow:release is equivalent to git flow release start v?.??, with a few advantages:");
         getLog().info("- The project version is automatically incremented.");
