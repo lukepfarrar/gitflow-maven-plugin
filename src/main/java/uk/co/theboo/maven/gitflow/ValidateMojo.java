@@ -9,6 +9,7 @@ import org.apache.maven.model.Model;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.shared.release.versions.DefaultVersionInfo;
 import org.apache.maven.shared.release.versions.VersionParseException;
 import org.eclipse.jgit.api.Git;
@@ -18,9 +19,7 @@ import uk.co.theboo.jgitflow.GitFlowRepository;
 import uk.co.theboo.jgitflow.GitUtils;
 import uk.co.theboo.maven.utils.PomUtils;
 
-/**
- * @goal validate
- */
+@Mojo(name="validate")
 public class ValidateMojo extends AbstractMojo {
 
     @Override
