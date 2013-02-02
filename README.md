@@ -90,3 +90,10 @@ This will:
 When you do a normal git flow release finish XXX, the release branch will merge to develop without any
 complaint, as both branches now have a common ancestry.
 
+License
+-------
+
+Copyright 2013 Luke Farrar <luke at gmail dot com>
+
+Licensed under the GNU General Public License, version 3. See LICENSE.TXT.
+
