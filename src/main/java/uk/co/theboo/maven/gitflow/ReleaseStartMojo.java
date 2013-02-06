@@ -122,7 +122,6 @@ public class ReleaseStartMojo extends AbstractMojo {
                 getLog().info("- Start committing last-minute fixes in preparing your release");
                 getLog().info("");
                 getLog().info("When done, run:");
-                getLog().info("");
                 getLog().info("- git flow release finish " + releaseVersion);
                 getLog().info("");
                 failed = false;
