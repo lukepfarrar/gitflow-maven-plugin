@@ -19,6 +19,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mavenVersion>3.0</mavenVersion>
     </properties>
+    <scm>
+    	<connection>scm:git:git@github.com:lukepfarrar/gitflow-maven-plugin.git</connection>
+	<url>scm:git:git@github.com:lukepfarrar/gitflow-maven-plugin.git</url>
+	<developerConnection>scm:git:git@github.com:lukepfarrar/gitflow-maven-plugin.git</developerConnection>
+    </scm>
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>

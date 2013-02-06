@@ -22,8 +22,8 @@ import uk.co.theboo.jgitflow.GitUtils;
 import uk.co.theboo.jgitflow.NotGitFlowRepositoryException;
 import uk.co.theboo.maven.utils.PomUtils;
 
-@Mojo(name = "release")
-public class ReleaseMojo extends AbstractMojo {
+@Mojo(name = "release-start")
+public class ReleaseStartMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {       
@@ -31,9 +31,7 @@ public class ReleaseMojo extends AbstractMojo {
         boolean failed = true;
         
         try {
-            GitFlowRepository gitFlowRepo = null;
-            gitFlowRepo = new GitFlowRepository(GitUtils.initGitRepository());
-
+            GitFlowRepository gitFlowRepo = new GitFlowRepository(GitUtils.initGitRepository());
             Git git = gitFlowRepo.git();
 
             // Check for unfinished releases
@@ -84,7 +82,7 @@ public class ReleaseMojo extends AbstractMojo {
                 List<String> dependencyLog = removeSnapshotVersions(model);
 
                 // Write release pom to the develop branch, to provide common ancestry.
-                final String messagePrefix = "mvn gitflow:release setting POM version to ";
+                final String messagePrefix = "mvn gitflow:release-start setting POM version to ";
                 RevCommit relasePomOnDevelopCommit = writeAndCommitPom(model, pomFile, git, messagePrefix + releaseVersion);
 
                 // Create the new release branch from this commit

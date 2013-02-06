@@ -42,7 +42,7 @@ Any bug fixes for the 0.1 release are done, and then to finish the release:
 
 Using the plugin this would be:
 -------------------------------
-1. **mvn gitflow:release** - *Automatically increments the version number on
+1. **mvn gitflow:release-start** - *Automatically increments the version number on
 develop & release branch, and changes any SNAPSHOT references to release versions
 on the release branch.*
 
@@ -55,18 +55,18 @@ Install
 
 jgitflow must first be installed:
 
-* **git clone git@github.com:lukepfarrar/jgitflow.git**
-* **cd jgitflow**
-* **git flow init -d**
-* **mvn clean install**
-* **cd ..**
+    git clone git@github.com:lukepfarrar/jgitflow.git
+    cd jgitflow 
+    git flow init -d
+    mvn clean install
+    cd ..
 
 Followed by the plugin itself:
 
-* **git clone git@github.com:lukepfarrar/gitflow-maven-plugin.git**
-* **cd gitflow-maven-plugin**
-* **git flow init -d**
-* **mvn clean install**
+    git clone git@github.com:lukepfarrar/gitflow-maven-plugin.git
+    cd gitflow-maven-plugin
+    git flow init -d
+    mvn clean install
 
 As this is not in central a plugin group needs to be added to ~/.m2/settings.xml:
 
@@ -79,7 +79,7 @@ As this is not in central a plugin group needs to be added to ~/.m2/settings.xml
 Usage
 -----
 
-The only useful goal at present is **mvn gitflow:release**
+The only useful goal at present is **mvn gitflow:release-start**
 
 This will:
 
