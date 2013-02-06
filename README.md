@@ -2,12 +2,12 @@
 gitflow-maven-plugin
 ====================
 
-I wrote this maven plugin to avoid inevitable merges when you finish a git flow release branch
-when using maven. It does not use the maven release plugin.
+gitflow-maven-plugin avoids inevitable pom.xml merges when finishing a git-flow release branch
+on a maven project.
+It does not use the maven release plugin.
 
-*NB: Whilst this software has been working fine for me (including on this project), it could
-do with more testing and real world use before it should be to be considered stable.
-Please let me know how you get on.*
+*NB: Whilst this software has been working fine to my knowledge, it could do with more testing and real
+world use before it should be to be considered stable. Please let me know how you get on.*
 
 
 Problem
