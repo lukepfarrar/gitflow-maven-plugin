@@ -4,10 +4,12 @@ gitflow-maven-plugin
 
 gitflow-maven-plugin avoids inevitable pom.xml merges when finishing a git-flow release branch
 on a maven project.
-It does not use the maven release plugin.
 
-*NB: Whilst this software has been working fine to my knowledge, it could do with more testing and real
-world use before it should be to be considered stable. Please let me know how you get on.*
+A more substantial [plugin](https://bitbucket.org/atlassian/maven-jgitflow-plugin) now exists, based
+on the maven-release-plugin.
+
+This plugin does not use the maven release plugin, or try to emulate any of its functionality; it just
+provides a replacement for *git flow release start* command that stops the need for pom merging later on.
 
 
 Problem
