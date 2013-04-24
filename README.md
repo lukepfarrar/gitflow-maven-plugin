@@ -9,7 +9,42 @@ A more substantial [plugin](https://bitbucket.org/atlassian/maven-jgitflow-plugi
 on the maven-release-plugin.
 
 This plugin does not use the maven release plugin, or try to emulate any of its functionality; it just
-provides a replacement for *git flow release start* command that stops the need for pom merging later on.
+provides a replacement for *git flow release start* command that stops the need for pom merging later on, e.g.
+
+    $ mvn gitflow:release-start
+    [INFO] Scanning for projects...
+    [INFO]                                                                         
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Building jgitflow 0.4-SNAPSHOT
+    [INFO] ------------------------------------------------------------------------
+    [INFO] 
+    [INFO] --- gitflow-maven-plugin:0.6-SNAPSHOT:release-start (default-cli) @ jgitflow ---
+    [INFO] 
+    [INFO] Current development version is: 0.4-SNAPSHOT
+    [INFO] 
+    [INFO] Summary of actions:
+    [INFO] - A new branch 'release/0.4' was created, based on 'develop'
+    [INFO] - The project version in branch 'release/0.4' is '0.4'
+    [INFO] - The project version in branch 'develop' is '0.5-SNAPSHOT'
+    [INFO] - You are now on branch 'release/0.4'
+    [INFO] 
+    [INFO] Follow-up actions:
+    [INFO] - Start committing last-minute fixes in preparing your release
+    [INFO] 
+    [INFO] When done, run:
+    [INFO] - git flow release finish 0.4
+    [INFO] 
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 2.853s
+    [INFO] Finished at: Wed Apr 24 18:25:05 BST 2013
+    [INFO] Final Memory: 8M/151M
+    [INFO] ------------------------------------------------------------------------
+
+*Fix bugs*
+
+    $ git flow release finish 0.1
 
 
 Problem
