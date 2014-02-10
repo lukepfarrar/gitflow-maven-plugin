@@ -4,7 +4,7 @@
 
     <groupId>uk.co.theboo</groupId>
     <artifactId>gitflow-maven-plugin</artifactId>
-    <version>0.6-SNAPSHOT</version>
+    <version>0.7-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>gitflow-maven-plugin Maven Mojo</name>
