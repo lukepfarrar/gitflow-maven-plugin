@@ -4,7 +4,7 @@
 
     <groupId>uk.co.theboo</groupId>
     <artifactId>gitflow-maven-plugin</artifactId>
-    <version>0.5.1</version>
+    <version>0.6</version>
     <packaging>maven-plugin</packaging>
 
     <name>gitflow-maven-plugin Maven Mojo</name>
@@ -19,6 +19,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mavenVersion>3.0</mavenVersion>
     </properties>
+    <scm>
+    	<connection>scm:git:git@github.com:lukepfarrar/gitflow-maven-plugin.git</connection>
+	<url>scm:git:git@github.com:lukepfarrar/gitflow-maven-plugin.git</url>
+	<developerConnection>scm:git:git@github.com:lukepfarrar/gitflow-maven-plugin.git</developerConnection>
+    </scm>
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
@@ -88,7 +93,7 @@
         <dependency>
             <groupId>uk.co.theboo</groupId>
             <artifactId>jgitflow</artifactId>
-            <version>0.3</version>
+            <version>0.4</version>
             <type>jar</type>
         </dependency>
         <dependency>

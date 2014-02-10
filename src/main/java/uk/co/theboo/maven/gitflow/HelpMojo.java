@@ -14,7 +14,7 @@ public class HelpMojo extends AbstractMojo {
         getLog().info("This plugin simplifies gitflow releases with maven projects.");
         getLog().info("See https://github.com/lukepfarrar/gitflow-maven-plugin for more details.");
         getLog().info("");
-        getLog().info("mvn gitflow:release is equivalent to git flow release start v?.??, with a few advantages:");
+        getLog().info("mvn gitflow:release-start is equivalent to git flow release start v?.??, with a few advantages:");
         getLog().info("- The project version is automatically incremented.");
         getLog().info("- SNAPSHOT dependencies are replaced by the equivalent release versions.");
         getLog().info("- The release pom is commited to develop, then reverted. This stops merge conflicts when the branch is finished.");
